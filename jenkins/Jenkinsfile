@@ -26,18 +26,25 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Test A') {
             steps {
                 sh 'mvn test'
+        stage (test b){
+            echo "stage stage 123b"
+        }
+        stage (test c){
+            echo  "qwert"
+        }
 
-            }
+         }
+        }
 
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
+        
 
         stage('Deliver') {
             steps {
